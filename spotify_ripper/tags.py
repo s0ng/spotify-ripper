@@ -119,7 +119,7 @@ def set_metadata_tags(args, audio_file, idx, track, ripper):
             def embed_image():
                 audio.tags.add(
                     id3.APIC(
-                        encoding=3,
+                        encoding=0,
                         mime='image/jpeg',
                         type=3,
                         desc='Front Cover',
