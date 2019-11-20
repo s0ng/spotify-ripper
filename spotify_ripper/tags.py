@@ -10,7 +10,10 @@ from datetime import datetime
 import os
 import sys
 import base64
-import urllib
+if sys.version_info[0] >= 3:
+    from urllib.request import urlretrieve
+else:
+    from urllib import urlretrieve
 
 
 
@@ -74,7 +77,7 @@ def set_metadata_tags(args, audio_file, idx, track, ripper):
         def get_cover_image(image_link):
             image_link = 'http://open.spotify.com%s' % (
                 image_link[len('spotify'):].replace(':', '/'))
-            cover_file = urllib.urlretrieve(image_link)[0]
+            cover_file = urlretrieve(image_link)[0]
             
             with open(cover_file, "rb") as f:
                 if f.mode == "rb":
